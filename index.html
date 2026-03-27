@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gokul Selvaraj, PhD — Life Science Data Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FAFAF7;
+      --ink:      #1A1A2E;
+      --ink-soft: #4A4A6A;
+      --teal:     #2A9D8F;
+      --teal-light: #E8F5F3;
+      --coral:    #E76F51;
+      --sand:     #F4F1EB;
+      --border:   #E8E4DC;
+      --shadow:   0 2px 20px rgba(26,26,46,0.08);
+      --shadow-hover: 0 8px 40px rgba(26,26,46,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250,250,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-soft);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 4rem;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #238A7D;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(42,157,143,0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      flex: 0 0 340px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .stat-card:nth-child(2) { animation-delay: -2s; margin-left: 2rem; }
+    .stat-card:nth-child(3) { animation-delay: -4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .stat-icon {
+      width: 44px; height: 44px;
+      background: var(--teal-light);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--ink-soft);
+      font-size: 1rem;
+      max-width: 600px;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--sand); border-radius: 2rem; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-bio {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .about-bio p + p { margin-top: 1rem; }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .timeline-dot {
+      width: 10px; height: 10px;
+      background: var(--teal);
+      border-radius: 50%;
+      margin-top: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .timeline-year {
+      font-size: 0.75rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--teal);
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #f0faf9 0%, #fff 60%);
+      border-color: var(--teal);
+    }
+
+    .project-card.featured::before { transform: scaleX(1); }
+
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .project-subtitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      flex: 1;
+      font-weight: 300;
+    }
+
+    .project-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+    }
+
+    .chip {
+      background: var(--sand);
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.3rem;
+      font-family: 'DM Sans', monospace;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--teal);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      text-decoration: none;
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--sand); border-radius: 2rem; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    .skill-category-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .skill-list li {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      background: var(--ink);
+      border-radius: 2rem;
+      padding: 4rem;
+      text-align: center;
+      color: white;
+    }
+
+    .contact-wrapper .section-label { color: var(--teal); }
+
+    .contact-wrapper .section-title { color: white; }
+
+    .contact-wrapper p {
+      color: rgba(255,255,255,0.65);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-links .btn-primary {
+      background: var(--teal);
+    }
+
+    .contact-links .btn-outline {
+      color: white;
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .contact-links .btn-outline:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; gap: 3rem; padding-top: 6rem; }
+      .hero-visual { flex: none; width: 100%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+      .contact-wrapper { padding: 2.5rem 1.5rem; }
+      .nav-links { display: none; }
+    }
+
+    /* ── SCROLL ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Gokul Selvaraj</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text fade-up">
+    <span class="hero-eyebrow">Life Science Data Scientist</span>
+    <h1>Bridging <em>biology</em> and data science</h1>
+    <p class="hero-description">
+      PhD scientist with expertise in cell biology, microbiology, and molecular biology — applying machine learning, multi-omics, and statistical analysis to drug development and precision oncology.
+    </p>
+    <div class="hero-cta">
+      <a href="https://gokul-selvaraj.shinyapps.io/drug-sensitivity-shiny/" target="_blank" class="btn btn-primary">
+        🚀 Live App Demo
+      </a>
+      <a href="https://github.com/GokulSelvaraj-Scientist" target="_blank" class="btn btn-outline">
+        View GitHub →
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-card">
+      <div class="stat-icon">🧬</div>
+      <div>
+        <div class="stat-label">Real Patient Data</div>
+        <div class="stat-value">TCGA Multi-Omics</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🤖</div>
+      <div>
+        <div class="stat-label">ML Performance</div>
+        <div class="stat-value">AUC 0.998 Cancer Dx</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💊</div>
+      <div>
+        <div class="stat-label">Interactive Tool</div>
+        <div class="stat-value">Drug Sensitivity App</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Background</div>
+  <div class="section-title">About Me</div>
+  <div class="about-grid">
+    <div>
+      <div class="about-bio">
+        <p>I am a life scientist with a PhD in cell and molecular biology and 4 years of postdoctoral research experience, transitioning into life science data science. My scientific expertise spans cell biology, microbiology, and molecular biology.</p>
+        <p>I spent 3 years as a scientific subject matter expert in consulting, advising clients on complex scientific questions, analyzing data, and communicating findings to non-scientific stakeholders — skills that directly complement technical data science work.</p>
+        <p>I am passionate about applying computational methods to real biomedical problems: identifying biomarkers, stratifying patients, predicting treatment response, and supporting drug development decisions.</p>
+      </div>
+      <div class="about-tags">
+        <span class="tag">Cell Biology</span>
+        <span class="tag">Microbiology</span>
+        <span class="tag">Molecular Biology</span>
+        <span class="tag">Drug Development</span>
+        <span class="tag">Oncology</span>
+        <span class="tag">Biomarker Discovery</span>
+        <span class="tag">Clinical Research</span>
+        <span class="tag">Multi-Omics</span>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-year">PRESENT</div>
+          <div class="timeline-title">Life Science Data Scientist</div>
+          <div class="timeline-desc">Building computational portfolio in multi-omics, ML, and interactive data tools</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-year">3 YEARS</div>
+          <div class="timeline-title">Scientific Consultant (SME)</div>
+          <div class="timeline-desc">Subject matter expert — scientific analysis, client advisory, strategic communication</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-year">4 YEARS</div>
+          <div class="timeline-title">Postdoctoral Researcher</div>
+          <div class="timeline-desc">Cell biology and molecular biology research</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-year">PhD</div>
+          <div class="timeline-title">Doctor of Philosophy</div>
+          <div class="timeline-desc">Cell Biology / Microbiology / Molecular Biology</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <div class="section-title">Featured Projects</div>
+  <p class="section-subtitle">Six end-to-end data science projects spanning real patient data, machine learning, interactive tools, and multi-omics integration.</p>
+
+  <div class="projects-grid">
+
+    <!-- TCGA - Featured -->
+    <a href="https://github.com/GokulSelvaraj-Scientist/tcga-lung-cancer-analysis" target="_blank" class="project-card featured fade-up">
+      <span class="project-badge">⭐ Real Patient Data</span>
+      <div class="project-icon">🧬</div>
+      <div class="project-title">TCGA Lung Cancer Multi-Omics Analysis</div>
+      <div class="project-subtitle">Real TCGA data · Multi-omics · Survival prediction · ML</div>
+      <p class="project-desc">Comprehensive analysis of 500+ real lung adenocarcinoma patients from TCGA integrating RNA-seq, somatic mutation, and clinical data. Covers mutation landscape profiling, molecular subtype discovery, Cox survival regression, ML-based 2-year survival prediction (AUC = 0.75), and multi-omics integration mapping EGFR mutations onto gene expression space.</p>
+      <div class="project-chips">
+        <span class="chip">TCGAbiolinks</span>
+        <span class="chip">DESeq2</span>
+        <span class="chip">maftools</span>
+        <span class="chip">survival</span>
+        <span class="chip">randomForest</span>
+        <span class="chip">caret</span>
+      </div>
+      <span class="project-link">View on GitHub →</span>
+    </a>
+
+    <!-- Shiny -->
+    <a href="https://gokul-selvaraj.shinyapps.io/drug-sensitivity-shiny/" target="_blank" class="project-card fade-up">
+      <span class="project-badge">🚀 Live App</span>
+      <div class="project-icon">💊</div>
+      <div class="project-title">Drug Sensitivity Prediction Dashboard</div>
+      <div class="project-subtitle">Interactive Shiny · Pharmacogenomics · Live ML</div>
+      <p class="project-desc">Interactive dashboard for exploring drug sensitivity and predicting treatment response in cancer cell lines. Features live ML model training, biomarker analysis with Wilcoxon testing, and a drug sensitivity heatmap across 8 drugs and 8 cancer types.</p>
+      <div class="project-chips">
+        <span class="chip">Shiny</span>
+        <span class="chip">shinydashboard</span>
+        <span class="chip">randomForest</span>
+        <span class="chip">pROC</span>
+      </div>
+      <span class="project-link">Open Live App →</span>
+    </a>
+
+    <!-- Cancer ML -->
+    <a href="https://github.com/GokulSelvaraj-Scientist/cancer-ml-analysis" target="_blank" class="project-card fade-up">
+      <div class="project-icon">🤖</div>
+      <div class="project-title">Cancer Diagnosis: ML Classification</div>
+      <div class="project-subtitle">97.8% Accuracy · AUC 0.998 · R Markdown Report</div>
+      <p class="project-desc">End-to-end ML pipeline for breast cancer diagnosis with Random Forest and Logistic Regression. Includes unsupervised clustering that independently recovers malignant/benign distinction, and a fully rendered R Markdown report with biological interpretation.</p>
+      <div class="project-chips">
+        <span class="chip">caret</span>
+        <span class="chip">randomForest</span>
+        <span class="chip">pROC</span>
+        <span class="chip">R Markdown</span>
+      </div>
+      <span class="project-link">View on GitHub →</span>
+    </a>
+
+    <!-- Microbiome -->
+    <a href="https://github.com/GokulSelvaraj-Scientist/microbiome-diversity-analysis" target="_blank" class="project-card fade-up">
+      <div class="project-icon">🦠</div>
+      <div class="project-title">Microbiome Diversity Analysis</div>
+      <div class="project-subtitle">Alpha/Beta diversity · PERMANOVA · IBD vs Healthy</div>
+      <p class="project-desc">Quantitative microbiome analysis across healthy, IBD, and antibiotic-treated groups using Shannon diversity, Bray-Curtis dissimilarity, PCoA, and PERMANOVA. Directly applicable to microbiome drug development endpoints.</p>
+      <div class="project-chips">
+        <span class="chip">vegan</span>
+        <span class="chip">ggplot2</span>
+        <span class="chip">PERMANOVA</span>
+        <span class="chip">PCoA</span>
+      </div>
+      <span class="project-link">View on GitHub →</span>
+    </a>
+
+    <!-- Survival -->
+    <a href="https://github.com/GokulSelvaraj-Scientist/survival-analysis" target="_blank" class="project-card fade-up">
+      <div class="project-icon">📈</div>
+      <div class="project-title">Survival Analysis: Lung Cancer</div>
+      <div class="project-subtitle">Kaplan-Meier · Cox regression · Clinical trial design</div>
+      <p class="project-desc">Kaplan-Meier survival curves and Cox proportional hazards regression on lung cancer clinical data. Identifies ECOG performance status and sex as independent predictors — directly applicable to clinical trial stratification and endpoint selection.</p>
+      <div class="project-chips">
+        <span class="chip">survival</span>
+        <span class="chip">survminer</span>
+        <span class="chip">ggplot2</span>
+      </div>
+      <span class="project-link">View on GitHub →</span>
+    </a>
+
+    <!-- Gene Expression -->
+    <a href="https://github.com/GokulSelvaraj-Scientist/gene-expression-analysis" target="_blank" class="project-card fade-up">
+      <div class="project-icon">🔬</div>
+      <div class="project-title">Gene Expression Analysis</div>
+      <div class="project-subtitle">DESeq2 · RNA-seq · Drug mechanism of action</div>
+      <p class="project-desc">Differential gene expression analysis of dexamethasone-treated airway smooth muscle cells using DESeq2. Identifies transcriptional targets of glucocorticoid signaling relevant to asthma drug mechanism and biomarker discovery.</p>
+      <div class="project-chips">
+        <span class="chip">DESeq2</span>
+        <span class="chip">ggplot2</span>
+        <span class="chip">pheatmap</span>
+        <span class="chip">Bioconductor</span>
+      </div>
+      <span class="project-link">View on GitHub →</span>
+    </a>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical</div>
+  <div class="section-title">Skills</div>
+  <div class="skills-grid">
+    <div class="skill-category fade-up">
+      <div class="skill-category-title">Languages</div>
+      <ul class="skill-list">
+        <li>R (advanced)</li>
+        <li>SQL (basic)</li>
+        <li>HTML/CSS</li>
+      </ul>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-category-title">Bioinformatics</div>
+      <ul class="skill-list">
+        <li>DESeq2 / edgeR</li>
+        <li>TCGAbiolinks</li>
+        <li>maftools</li>
+        <li>vegan</li>
+        <li>Bioconductor</li>
+      </ul>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-category-title">Machine Learning</div>
+      <ul class="skill-list">
+        <li>Random Forest</li>
+        <li>Logistic Regression</li>
+        <li>K-means clustering</li>
+        <li>PCA / dimensionality reduction</li>
+        <li>Survival analysis</li>
+      </ul>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-category-title">Visualization & Tools</div>
+      <ul class="skill-list">
+        <li>ggplot2 / pheatmap</li>
+        <li>R Shiny / shinydashboard</li>
+        <li>R Markdown</li>
+        <li>Git / GitHub</li>
+        <li>shinyapps.io</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper fade-up">
+    <div class="section-label">Get In Touch</div>
+    <div class="section-title">Open to Opportunities</div>
+    <p>I am actively seeking data scientist roles in biotech, pharma, and life science — particularly in translational research, drug development, and precision oncology.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/gokulselvaraj" target="_blank" class="btn btn-primary">
+        LinkedIn Profile
+      </a>
+      <a href="https://github.com/GokulSelvaraj-Scientist" target="_blank" class="btn btn-outline">
+        GitHub Portfolio
+      </a>
+      <a href="https://gokul-selvaraj.shinyapps.io/drug-sensitivity-shiny/" target="_blank" class="btn btn-outline">
+        Live App Demo
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Gokul Selvaraj, PhD · Built with GitHub Pages</p>
+</footer>
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
