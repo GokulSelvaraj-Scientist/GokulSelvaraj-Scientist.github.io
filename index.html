@@ -681,7 +681,7 @@
 <section id="projects">
   <div class="section-label">Portfolio</div>
   <div class="section-title">Featured Projects</div>
-  <p class="section-subtitle">Seven end-to-end data science projects spanning real patient data, machine learning, SQL databases, interactive tools, and multi-omics integration.</p>
+  <p class="section-subtitle">Eight end-to-end data science projects using real public datasets — spanning machine learning, SQL databases, interactive tools, survival analysis, and multi-omics integration in both R and Python.</p>
 
   <div class="projects-grid">
 
@@ -707,29 +707,30 @@
     <a href="https://gokul-selvaraj.shinyapps.io/drug-sensitivity-shiny/" target="_blank" class="project-card fade-up">
       <span class="project-badge">🚀 Live App</span>
       <div class="project-icon">💊</div>
-      <div class="project-title">Drug Sensitivity Prediction Dashboard</div>
-      <div class="project-subtitle">Interactive Shiny · Pharmacogenomics · Live ML</div>
-      <p class="project-desc">Interactive dashboard for exploring drug sensitivity and predicting treatment response in cancer cell lines. Features live ML model training, biomarker analysis with Wilcoxon testing, and a drug sensitivity heatmap across 8 drugs and 8 cancer types.</p>
+      <div class="project-title">Drug Sensitivity Explorer</div>
+      <div class="project-subtitle">Real GDSC2 data · 286 drugs · 969 cell lines · Interactive Shiny</div>
+      <p class="project-desc">Interactive dashboard exploring real drug sensitivity data from the Genomics of Drug Sensitivity in Cancer (GDSC2) database. Covers 286 drugs across 969 cancer cell lines and 31 cancer types with interactive filtering by drug, cancer type, and targeted pathway.</p>
       <div class="project-chips">
         <span class="chip">Shiny</span>
         <span class="chip">shinydashboard</span>
-        <span class="chip">randomForest</span>
-        <span class="chip">pROC</span>
+        <span class="chip">GDSC2</span>
+        <span class="chip">ggplot2</span>
+        <span class="chip">DT</span>
       </div>
       <span class="project-link">Open Live App →</span>
     </a>
 
-    <!-- Cancer ML -->
     <a href="https://github.com/GokulSelvaraj-Scientist/genomics-sql-analysis" target="_blank" class="project-card fade-up">
+      <span class="project-badge">⭐ Real Patient Data</span>
       <div class="project-icon">🗄️</div>
       <div class="project-title">Clinical Genomics SQL Database</div>
-      <div class="project-subtitle">SQL schema design · Complex queries · Genomics analytics</div>
-      <p class="project-desc">End-to-end relational database project — designing a clinical genomics schema from scratch, populating with realistic patient, mutation, and survival data, and running 10 analytical SQL queries covering mutation landscape, survival analysis, drug response prediction, and co-mutation analysis.</p>
+      <div class="project-subtitle">Real TCGA data · SQL schema design · 8 analytical queries</div>
+      <p class="project-desc">Relational database built from real TCGA-LUAD patient data with 8 analytical SQL queries covering survival by stage, molecular subtype, smoking history, and age group. Demonstrates end-to-end database design applicable to clinical trial data management systems.</p>
       <div class="project-chips">
         <span class="chip">SQL</span>
         <span class="chip">SQLite</span>
         <span class="chip">RSQLite</span>
-        <span class="chip">DBI</span>
+        <span class="chip">TCGA</span>
         <span class="chip">ggplot2</span>
       </div>
       <span class="project-link">View on GitHub →</span>
@@ -751,15 +752,34 @@
 
     <!-- Microbiome -->
     <a href="https://github.com/GokulSelvaraj-Scientist/microbiome-diversity-analysis" target="_blank" class="project-card fade-up">
+      <span class="project-badge">⭐ Real Patient Data</span>
       <div class="project-icon">🦠</div>
       <div class="project-title">Microbiome Diversity Analysis</div>
-      <div class="project-subtitle">Alpha/Beta diversity · PERMANOVA · IBD vs Healthy</div>
-      <p class="project-desc">Quantitative microbiome analysis across healthy, IBD, and antibiotic-treated groups using Shannon diversity, Bray-Curtis dissimilarity, PCoA, and PERMANOVA. Directly applicable to microbiome drug development endpoints.</p>
+      <div class="project-subtitle">Real HMP data · 1,627 samples · PERMANOVA p=0.001</div>
+      <p class="project-desc">Alpha and beta diversity analysis of real gut microbiome data from the Human Microbiome Project IBD study (1,627 stool samples, 426 healthy vs 1,201 IBD patients). Identifies significant microbial depletion in IBD including Ruminococcus, Roseburia, and Akkermansia muciniphila.</p>
       <div class="project-chips">
+        <span class="chip">curatedMetagenomicData</span>
         <span class="chip">vegan</span>
-        <span class="chip">ggplot2</span>
         <span class="chip">PERMANOVA</span>
         <span class="chip">PCoA</span>
+        <span class="chip">ggplot2</span>
+      </div>
+      <span class="project-link">View on GitHub →</span>
+    </a>
+
+    <!-- Python -->
+    <a href="https://github.com/GokulSelvaraj-Scientist/cancer-genomics-python" target="_blank" class="project-card fade-up">
+      <span class="project-badge">🐍 Python</span>
+      <div class="project-icon">🐍</div>
+      <div class="project-title">Cancer Genomics Analysis (Python)</div>
+      <div class="project-subtitle">Real data · AUC 0.995 · scikit-learn · lifelines</div>
+      <p class="project-desc">End-to-end cancer data science pipeline in Python using real Wisconsin Breast Cancer data (569 biopsies). Covers EDA, PCA, t-SNE, Random Forest, Gradient Boosting, and Logistic Regression classification (AUC = 0.995), plus survival analysis using the Rossi longitudinal dataset.</p>
+      <div class="project-chips">
+        <span class="chip">Python</span>
+        <span class="chip">scikit-learn</span>
+        <span class="chip">lifelines</span>
+        <span class="chip">pandas</span>
+        <span class="chip">matplotlib</span>
       </div>
       <span class="project-link">View on GitHub →</span>
     </a>
@@ -807,6 +827,7 @@
       <div class="skill-category-title">Languages</div>
       <ul class="skill-list">
         <li>R (advanced)</li>
+        <li>Python (scikit-learn, pandas, matplotlib, lifelines)</li>
         <li>SQL (SQLite, RSQLite)</li>
         <li>HTML/CSS</li>
       </ul>
